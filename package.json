@@ -1,0 +1,136 @@
+{
+  "name": "widget-emotes",
+  "version": "3.2.1",
+  "description": "Emotes widget",
+  "main": "app/index.tsx",
+  "sideEffects": false,
+  "scripts": {
+    "start": "NODE_ENV=development webpack-dev-server --config ./webpack.config.js --env.development --mode development",
+    "dev": "npm run start",
+    "build": "npm run lint && rimraf ./dist && NODE_ENV=production webpack --env.production --color --progress",
+    "test": "API_URL=http://api.test jest",
+    "test:watch": "API_URL=http://api.test jest --watch",
+    "test:updateSnapshot": "jest --updateSnapshot",
+    "test:coverage": "jest --collectCoverage",
+    "lint": "tsc --noEmit --project tsconfig.json --skipLibCheck && tslint app/**.ts --config tslint.json",
+    "format": "prettier --write 'app/**/**.{ts,tsx}'"
+  },
+  "private": true,
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && npm run lint && npm test"
+    }
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
+  },
+  "jest": {
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "clover",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "app/**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/tools/setupTests.ts"
+    ],
+    "modulePaths": [
+      "app"
+    ],
+    "globals": {
+      "ts-jest": {
+        "isolatedModules": true
+      }
+    },
+    "transform": {
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$"
+  },
+  "dependencies": {
+    "create-inferno-context": "^0.2.4",
+    "inferno": "^7.3.2",
+    "inferno-compat": "^7.3.2",
+    "js-cookie": "^2.2.1",
+    "lodash": "^4.17.15",
+    "polished": "^3.4.1",
+    "prettier": "^1.18.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "redux-zero": "^5.0.5",
+    "styled-components": "^4.4.0",
+    "url-search-params-polyfill": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
+    "@babel/runtime": "^7.6.3",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.20",
+    "@types/js-cookie": "^2.2.4",
+    "@types/lodash": "^4.14.149",
+    "@types/node": "^12.11.7",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "@types/styled-components": "^4.1.20",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-styled-components": "^1.10.6",
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.0",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "lodash-webpack-plugin": "^0.11.5",
+    "prettier": "^1.18.2",
+    "source-map-loader": "^0.2.4",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.4.1",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-loader": "^3.5.4",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.1.0",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0"
+  }
+}

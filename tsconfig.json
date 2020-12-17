@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "lib": ["es6", "es7", "esnext", "dom", "es2015.collection", "es2018.promise"],
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "baseUrl": "app",
+    "types": ["react", "react-dom", "node", "jest"]
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "reportFiles": ["app/**/*.{ts,tsx}"]
+  },
+  "include": ["app", "interfaces"],
+  "exclude": ["node_modules", "dist", "scripts", "acceptance-tests", "webpack", "jest", "tools"]
+}
